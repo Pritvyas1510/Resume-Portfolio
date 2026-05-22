@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prit Vyas — Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #111010;
+        --paper: #f6f4f0;
+        --accent: #b5451b;
+        --accent2: #1b4eb5;
+        --green: #1e6b3a;
+        --muted: #6b6560;
+        --rule: #ddd8d0;
+        --tag-bg: #eeece7;
+        --tag-blue: #e8edf8;
+        --tag-grn: #e6f4ec;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+        font-size: 11.2px;
+        line-height: 1.52;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* ════ PRINT ════ */
+      @media print {
+        @page {
+          size: A4;
+          margin: 8mm 9mm 8mm 9mm;
+        }
+        html,
+        body {
+          background: white;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .page {
+          box-shadow: none !important;
+          margin: 0 !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          border-radius: 0 !important;
+        }
+      }
+
+      /* ════ PAGE ════ */
+      .page {
+        max-width: 210mm;
+        margin: 1.8rem auto 3rem;
+        background: white;
+        box-shadow:
+          0 10px 70px rgba(0, 0, 0, 0.14),
+          0 2px 10px rgba(0, 0, 0, 0.06);
+        position: relative;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      /* left colour bar */
+      .page::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background: linear-gradient(
+          180deg,
+          var(--accent) 0%,
+          var(--accent2) 55%,
+          #0d3080 100%
+        );
+        z-index: 2;
+      }
+
+      /* ════ HEADER ════ */
+      .header {
+        padding: 1.6rem 2rem 1.2rem 2.4rem;
+        border-bottom: 2px solid var(--rule);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1.5rem;
+        align-items: center;
+        background: white;
+      }
+      .name {
+        font-family: "Playfair Display", serif;
+        font-size: 2.55rem;
+        font-weight: 900;
+        letter-spacing: -0.025em;
+        line-height: 1;
+        color: var(--ink);
+      }
+      .name span {
+        color: var(--accent);
+      }
+      .title-line {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent2);
+        margin-top: 0.35rem;
+      }
+      .contact-block {
+        text-align: right;
+        font-size: 0.68rem;
+        color: var(--muted);
+        line-height: 2;
+      }
+      .contact-block a {
+        color: var(--accent2);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .contact-block a:hover {
+        text-decoration: underline;
+      }
+
+      /* ════ BODY GRID ════ */
+      .body {
+        display: grid;
+        grid-template-columns: 1fr 228px;
+      }
+      .main-col {
+        padding: 1.1rem 1.5rem 1.4rem 2.4rem;
+        border-right: 1.5px solid var(--rule);
+      }
+      .side-col {
+        padding: 1.1rem 1.4rem 1.4rem 1.3rem;
+        background: #fcfbf9;
+      }
+
+      /* ════ SECTION ════ */
+      .section {
+        margin-bottom: 1.05rem;
+      }
+      .section-label {
+        font-family: "Playfair Display", serif;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 0.52rem;
+        padding-bottom: 0.26rem;
+        border-bottom: 1.5px solid var(--rule);
+        display: flex;
+        align-items: center;
+        gap: 0.38rem;
+      }
+      .section-label::before {
+        content: "";
+        width: 14px;
+        height: 2px;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+
+      /* ════ EXPERIENCE ENTRY ════ */
+      .entry {
+        margin-bottom: 0.8rem;
+      }
+      .entry:last-child {
+        margin-bottom: 0;
+      }
+
+      .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.4rem;
+        margin-bottom: 0.06rem;
+      }
+      .entry-title {
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: var(--ink);
+        line-height: 1.25;
+      }
+      .entry-date {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.6rem;
+        color: var(--accent);
+        background: #fff4f1;
+        padding: 0.06rem 0.4rem;
+        border-radius: 3px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        border: 1px solid #f0c4b0;
+      }
+      .entry-org {
+        font-size: 0.71rem;
+        color: var(--accent2);
+        font-weight: 700;
+        margin-bottom: 0.15rem;
+      }
+      .subjects-line {
+        font-size: 0.64rem;
+        color: var(--muted);
+        font-style: italic;
+        margin-bottom: 0.14rem;
+      }
+      .subjects-line strong {
+        color: var(--ink);
+        font-style: normal;
+        font-weight: 700;
+      }
+      .entry-tech {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.58rem;
+        color: var(--muted);
+        margin-bottom: 0.16rem;
+      }
+
+      /* badge */
+      .badge-current {
+        display: inline-block;
+        font-size: 0.55rem;
+        font-weight: 700;
+        background: #e6f4ec;
+        color: var(--green);
+        border: 1px solid #9ed4b4;
+        border-radius: 3px;
+        padding: 0.03rem 0.32rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-left: 0.35rem;
+        vertical-align: middle;
+      }
+
+      /* ════ BULLETS ════ */
+      .bullet-list {
+        list-style: none;
+        padding: 0;
+      }
+      .bullet-list li {
+        font-size: 0.71rem;
+        color: #3a3530;
+        line-height: 1.54;
+        padding-left: 0.9rem;
+        position: relative;
+        margin-bottom: 0.1rem;
+      }
+      .bullet-list li::before {
+        content: "▸";
+        color: var(--accent);
+        position: absolute;
+        left: 0;
+        font-size: 0.54rem;
+        top: 0.17rem;
+      }
+
+      /* ════ HIGHLIGHTS ════ */
+      .hl {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .hl-blue {
+        color: var(--accent2);
+        font-weight: 700;
+      }
+      .hl-grn {
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      /* ════ PROFILE SUMMARY ════ */
+      .summary-text {
+        font-size: 0.72rem;
+        color: #3a3530;
+        line-height: 1.72;
+        border-left: 3px solid var(--accent);
+        padding-left: 0.8rem;
+        font-style: italic;
+      }
+
+      /* ════ PROJECT LINK ════ */
+      .project-link {
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+      .project-link:hover {
+        color: var(--accent2);
+        text-decoration: underline;
+      }
+
+      /* ════ EDUCATION — PROMINENT ════ */
+      .edu-entry {
+        margin-bottom: 0.65rem;
+        padding: 0.45rem 0.6rem;
+        border-left: 3px solid var(--accent2);
+        background: linear-gradient(90deg, #f0f4ff 0%, transparent 100%);
+        border-radius: 0 3px 3px 0;
+      }
+      .edu-entry:last-child {
+        margin-bottom: 0;
+      }
+      .edu-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.3rem;
+      }
+      .edu-degree {
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: var(--ink);
+        line-height: 1.2;
+      }
+      .edu-year {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.6rem;
+        color: white;
+        background: var(--accent2);
+        padding: 0.05rem 0.38rem;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+      .edu-inst {
+        font-size: 0.66rem;
+        color: var(--accent2);
+        font-weight: 600;
+        margin-top: 0.08rem;
+      }
+      .edu-board {
+        font-size: 0.61rem;
+        color: var(--muted);
+        margin-top: 0.02rem;
+      }
+
+      /* ════ SKILL TAGS ════ */
+      .tag-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.24rem;
+        margin-top: 0.26rem;
+      }
+      .tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.57rem;
+        background: var(--tag-bg);
+        color: var(--ink);
+        padding: 0.12rem 0.42rem;
+        border-radius: 3px;
+        border: 1px solid var(--rule);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .tag.accent {
+        background: #fff4f1;
+        border-color: #e8c4b8;
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .tag.blue {
+        background: var(--tag-blue);
+        border-color: #b8c4e8;
+        color: var(--accent2);
+        font-weight: 600;
+      }
+      .tag.green {
+        background: var(--tag-grn);
+        border-color: #9ed4b4;
+        color: var(--green);
+        font-weight: 600;
+      }
+      .tag.orange {
+        background: #fff8f0;
+        border-color: #f0d0a0;
+        color: #8b5a00;
+        font-weight: 600;
+      }
+
+      .skill-cat {
+        margin-bottom: 0.68rem;
+      }
+      .skill-cat-label {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.22rem;
+        padding-bottom: 0.1rem;
+        border-bottom: 1px dotted var(--rule);
+      }
+
+      /* ════ CERTIFICATIONS ════ */
+      .cert-item {
+        padding: 0.32rem 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .cert-item:last-child {
+        border-bottom: none;
+      }
+      .cert-title {
+        font-size: 0.69rem;
+        font-weight: 700;
+        color: var(--ink);
+        line-height: 1.35;
+      }
+      .cert-issuer {
+        font-size: 0.6rem;
+        color: var(--muted);
+        margin-top: 0.04rem;
+      }
+
+      /* ════ SUBJECTS TAUGHT — SIDE ════ */
+      .subject-row {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.28rem 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .subject-row:last-child {
+        border-bottom: none;
+      }
+      .subject-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        flex-shrink: 0;
+      }
+      .subject-name {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      /* ════ LANGUAGES ════ */
+      .lang-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.38rem;
+      }
+      .lang-name {
+        font-size: 0.71rem;
+        font-weight: 600;
+      }
+      .lang-bar {
+        width: 70px;
+        height: 5px;
+        background: var(--rule);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .lang-fill {
+        height: 100%;
+        background: var(--accent2);
+        border-radius: 3px;
+      }
+
+      /* ════ PRINT BUTTON ════ */
+      .print-btn {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.3rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 0 4px 18px rgba(181, 69, 27, 0.38);
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+        z-index: 999;
+      }
+      .print-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 22px rgba(181, 69, 27, 0.46);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-btn no-print" onclick="window.print()">
+      ⬇ Print / Save PDF
+    </button>
+
+    <div class="page">
+      <!-- ══════════ HEADER ══════════ -->
+      <div class="header">
+        <div>
+          <div class="name">Prit <span>Vyas</span></div>
+          <div class="title-line">
+            Assistant Professor &nbsp;·&nbsp; MERN Stack Developer &nbsp;·&nbsp;
+            Full-Stack Web Developer
+          </div>
+        </div>
+        <div class="contact-block">
+          Ahmedabad, Gujarat, India<br />
+          +91 9265068824<br />
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=vyasprit962@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >vyasprit962@gmail.com</a
+          ><br />
+          <a href="https://github.com/Pritvyas1510" target="_blank"
+            >GitHub Profile</a
+          >
+        </div>
+      </div>
+
+      <div class="body">
+        <!-- ══════════ MAIN COLUMN ══════════ -->
+        <div class="main-col">
+          <!-- PROFILE -->
+          <div class="section">
+            <div class="section-label">Profile</div>
+            <p class="summary-text">
+              Full-stack
+              <span class="hl" style="font-style: normal"
+                >MERN Stack Developer</span
+              >
+              and educator with an
+              <span class="hl-blue" style="font-style: normal"
+                >M.Sc. in Information Technology</span
+              >
+              from CHARUSAT University. Currently serving as
+              <span class="hl-grn" style="font-style: normal"
+                >Assistant Professor at Monark University</span
+              >, teaching MERN Stack, Advanced Data Structures, and IoT.
+              Combines industry project experience with a strong commitment to
+              practical, project-based education and student growth.
+            </p>
+          </div>
+
+          <!-- EXPERIENCE -->
+          <div class="section">
+            <div class="section-label">Experience</div>
+
+            <!-- Monark University — CURRENT -->
+            <div class="entry">
+              <div class="entry-header">
+                <div class="entry-title">
+                  Assistant Professor
+                  <span class="badge-current">● Current</span>
+                </div>
+                <div class="entry-date">2025 – Present</div>
+              </div>
+              <div class="entry-org">Monark University, Ahmedabad</div>
+              <div class="subjects-line">
+                Subjects:
+                <strong
+                  >MERN Stack Development &nbsp;·&nbsp; Advanced Data Structures
+                  &nbsp;·&nbsp; Internet of Things (IoT)</strong
+                >
+              </div>
+              <ul class="bullet-list">
+                <li>
+                  Delivering lectures and hands-on labs in
+                  <span class="hl">MERN Stack</span>, Advanced Data Structures,
+                  and IoT for undergraduate IT students.
+                </li>
+                <li>
+                  Designing project-based assignments and practical assessments
+                  aligned with current industry standards.
+                </li>
+                <li>
+                  Mentoring students on full-stack development projects and
+                  guiding their practical learning journey.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Excelsior Technologies -->
+            <div class="entry">
+              <div class="entry-header">
+                <div class="entry-title">MERN Stack Intern</div>
+                <div class="entry-date">Oct 2025 – Apr 2026</div>
+              </div>
+              <div class="entry-org">Excelsior Technologies, Ahmedabad</div>
+              <ul class="bullet-list">
+                <li>
+                  Developed full-stack features using
+                  <span class="hl"
+                    >MongoDB, Express.js, React, and Node.js</span
+                  >
+                  in a professional team environment.
+                </li>
+                <li>
+                  Built reusable React components, REST API integrations, and
+                  implemented JWT authentication and Multer file handling.
+                </li>
+                <li>
+                  Followed agile development workflows; received a
+                  <span class="hl">Completion Certificate</span> on successful
+                  completion.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Way to Web -->
+            <div class="entry">
+              <div class="entry-header">
+                <div class="entry-title">MERN Stack Developer</div>
+                <div class="entry-date">Dec 2024 – Sep 2025</div>
+              </div>
+              <div class="entry-org">Way to Web Pvt. Ltd., Ahmedabad</div>
+              <ul class="bullet-list">
+                <li>
+                  Built and maintained full-stack web applications using the
+                  <span class="hl">MERN stack</span> as part of a product
+                  development team.
+                </li>
+                <li>
+                  Developed reusable React components, integrated RESTful APIs,
+                  implemented JWT auth and Cloudinary media uploads.
+                </li>
+                <li>
+                  Collaborated in agile sprints to improve UI performance, user
+                  experience, and application scalability.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Zaalima -->
+            <div class="entry">
+              <div class="entry-header">
+                <div class="entry-title">Web Development Intern</div>
+                <div class="entry-date">Jun 2025 – Aug 2025</div>
+              </div>
+              <div class="entry-org">
+                Zaalima Development Pvt. Ltd., Ahmedabad
+              </div>
+              <ul class="bullet-list">
+                <li>
+                  Contributed to live client projects using React, Tailwind CSS,
+                  and JavaScript; strengthened team-based development practices.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Teaching Assistant -->
+            <div class="entry">
+              <div class="entry-header">
+                <div class="entry-title">
+                  Teaching Assistant — Web Development
+                </div>
+                <div class="entry-date">2023 – 2025</div>
+              </div>
+              <div class="entry-org">Little Flower School, Ahmedabad</div>
+              <ul class="bullet-list">
+                <li>
+                  Prepared and delivered tutorials on HTML, CSS, and JavaScript;
+                  assisted in organizing hands-on coding sessions for students.
+                </li>
+                <li>
+                  Provided one-on-one guidance to students on web development
+                  concepts, improving their understanding and project
+                  confidence.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PROJECTS -->
+          <div class="section">
+            <div class="section-label">Projects</div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <a
+                  href="https://github.com/Pritvyas1510/ED-Tech.git"
+                  target="_blank"
+                  class="project-link"
+                  >EdTech Platform ↗</a
+                >
+                <div class="entry-date">MERN Stack</div>
+              </div>
+              <div class="entry-tech">
+                MongoDB · Express.js · React JS · Node.js · JWT · Cloudinary ·
+                Tailwind CSS · React Hook Form · Yup
+              </div>
+              <ul class="bullet-list">
+                <li>
+                  Personally designed and developed a full-stack e-learning
+                  platform with course listings, quizzes, and media content
+                  management.
+                </li>
+                <li>
+                  Implemented JWT-based authentication, Cloudinary media
+                  uploads, and validated forms with React Hook Form + Yup.
+                </li>
+              </ul>
+            </div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <a
+                  href="https://github.com/Pritvyas1510/Cloth-Printing.git"
+                  target="_blank"
+                  class="project-link"
+                  >Cloth Printing Management System ↗</a
+                >
+                <div class="entry-date">MERN Stack</div>
+              </div>
+              <div class="entry-tech">
+                MongoDB · Express.js · React JS · Node.js · Multer · Tailwind
+                CSS
+              </div>
+              <ul class="bullet-list">
+                <li>
+                  Independently built a full-stack system for order creation,
+                  design file uploads, and printing workflow tracking.
+                </li>
+                <li>
+                  Developed RESTful backend APIs with Express.js and managed
+                  state efficiently with React hooks.
+                </li>
+              </ul>
+            </div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <a
+                  href="https://github.com/Pritvyas1510/Snow-White.git"
+                  target="_blank"
+                  class="project-link"
+                  >Snow White — E-Commerce Fruit Website ↗</a
+                >
+                <div class="entry-date">React JS</div>
+              </div>
+              <div class="entry-tech">
+                React JS · Tailwind CSS · JavaScript · React Router · CSS
+                Animations
+              </div>
+              <ul class="bullet-list">
+                <li>
+                  Built a themed e-commerce website with product listings,
+                  dynamic cart, animated UI, and fully responsive layout.
+                </li>
+                <li>
+                  Designed character-based navigation with smooth CSS animations
+                  and custom illustrated components.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="entry-header">
+              <a href="https://github.com/Pritvyas1510/" class="project-link">
+                Hotel Management System ↗
+              </a>
+
+              <div class="entry-date">React JS</div>
+            </div>
+
+            <div class="entry-tech">
+              React JS · Tailwind CSS · JavaScript · REST API · React Router ·
+              Responsive UI
+            </div>
+
+            <ul class="bullet-list">
+              <li>
+                Built a hotel management web application to streamline room
+                booking, guest management, and hotel operations using React JS
+                and Tailwind CSS.
+              </li>
+
+              <li>
+                Implemented React Hooks for state management and integrated REST
+                APIs for dynamic data handling and real-time booking updates.
+              </li>
+
+              <li>
+                Developed a responsive and user-friendly interface to improve
+                staff productivity and reduce booking errors.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /main-col -->
+
+        <!-- ══════════ SIDEBAR ══════════ -->
+        <div class="side-col">
+          <!-- EDUCATION — PROMINENT -->
+          <div class="section">
+            <div class="section-label">Education</div>
+
+            <div class="edu-entry">
+              <div class="edu-row">
+                <div class="edu-degree">M.Sc. in Information Technology</div>
+                <div class="edu-year">2025</div>
+              </div>
+              <div class="edu-inst">CHARUSAT University, Changa</div>
+            </div>
+
+            <div class="edu-entry">
+              <div class="edu-row">
+                <div class="edu-degree">B.Sc. in Information Technology</div>
+                <div class="edu-year">2023</div>
+              </div>
+              <div class="edu-inst">CHARUSAT University, Changa</div>
+            </div>
+
+            <div class="edu-entry">
+              <div class="edu-row">
+                <div class="edu-degree">
+                  ITI — Computer Operator &amp; Programming
+                </div>
+                <div class="edu-year">2020</div>
+              </div>
+              <div class="edu-inst">ITI Kubernagar, Ahmedabad</div>
+            </div>
+
+            <div class="edu-entry">
+              <div class="edu-row">
+                <div class="edu-degree">H.S.C. — 12th Science</div>
+                <div class="edu-year">2019</div>
+              </div>
+              <div class="edu-inst">Sayyam Vidhyalay, Ahmedabad</div>
+              <div class="edu-board">NIOS Board</div>
+            </div>
+          </div>
+
+          <!-- SUBJECTS TAUGHT -->
+          <div class="section">
+            <div class="section-label">Subjects Taught</div>
+            <div class="subject-row">
+              <div class="subject-dot"></div>
+              <div class="subject-name">MERN Stack Development</div>
+            </div>
+            <div class="subject-row">
+              <div class="subject-dot"></div>
+              <div class="subject-name">Advanced Data Structures</div>
+            </div>
+            <div class="subject-row">
+              <div class="subject-dot"></div>
+              <div class="subject-name">Internet of Things (IoT)</div>
+            </div>
+            <div class="subject-row">
+              <div class="subject-dot"></div>
+              <div class="subject-name">HTML · CSS · JavaScript</div>
+            </div>
+            <div class="subject-row">
+              <div class="subject-dot"></div>
+              <div class="subject-name">React JS · Node.js</div>
+            </div>
+          </div>
+
+          <!-- TECHNICAL SKILLS -->
+          <div class="section">
+            <div class="section-label">Technical Skills</div>
+
+            <div class="skill-cat">
+              <div class="skill-cat-label">Frontend</div>
+              <div class="tag-group">
+                <span class="tag accent">React JS</span>
+                <span class="tag accent">React Router</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">React Hook Form</span>
+                <span class="tag">Yup Validation</span>
+                <span class="tag">Responsive Design</span>
+                <span class="tag">UI/UX Principles</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <div class="skill-cat-label">Backend</div>
+              <div class="tag-group">
+                <span class="tag blue">Node.js</span>
+                <span class="tag blue">Express.js</span>
+                <span class="tag">RESTful APIs</span>
+                <span class="tag">JWT Auth</span>
+                <span class="tag">Multer</span>
+                <span class="tag">Context API</span>
+                <span class="tag">Backend Validation</span>
+                <span class="tag">Error Handling</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <div class="skill-cat-label">Database &amp; Storage</div>
+              <div class="tag-group">
+                <span class="tag">MongoDB</span>
+                <span class="tag">Mongoose</span>
+                <span class="tag orange">PostgreSQL</span>
+                <span class="tag">Cloudinary</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <div class="skill-cat-label">Tools &amp; Practices</div>
+              <div class="tag-group">
+                <span class="tag">Git · GitHub</span>
+                <span class="tag">Postman</span>
+                <span class="tag">Axios</span>
+                <span class="tag">Agile / Scrum</span>
+                <span class="tag">Performance Opt.</span>
+                <span class="tag">Netlify</span>
+                <span class="tag">Vercel</span>
+                <span class="tag">Render</span>
+              </div>
+            </div>
+
+            <div class="skill-cat">
+              <div class="skill-cat-label">Teaching &amp; Pedagogy</div>
+              <div class="tag-group">
+                <span class="tag green">Curriculum Design</span>
+                <span class="tag green">Workshop Facilitation</span>
+                <span class="tag green">Student Mentoring</span>
+                <span class="tag green">Project-Based Learning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CERTIFICATIONS -->
+          <div class="section">
+            <div class="section-label">Certifications</div>
+
+            <div class="cert-item">
+              <div class="cert-title">
+                Completion Certificate — MERN Stack Intern
+              </div>
+              <div class="cert-issuer">
+                Excelsior Technologies &nbsp;·&nbsp; Apr 2026
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-title">MERN Stack Internship Certificate</div>
+              <div class="cert-issuer">
+                Way to Web Pvt. Ltd. &nbsp;·&nbsp; 2025
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-title">Web Development Internship</div>
+              <div class="cert-issuer">
+                Zaalima Development &nbsp;·&nbsp; 2025
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-title">Web Development Fundamentals</div>
+              <div class="cert-issuer">Codedamn &nbsp;·&nbsp; 2023</div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-title">Industry 4.0 &amp; Industrial IoT</div>
+              <div class="cert-issuer">
+                NPTEL · IIT Kharagpur &nbsp;·&nbsp; Apr 2024
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-title">Advanced Industrial IoT</div>
+              <div class="cert-issuer">
+                NPTEL · IIT Kharagpur &nbsp;·&nbsp; Nov 2024
+              </div>
+            </div>
+          </div>
+
+          <!-- LANGUAGES -->
+          <div class="section">
+            <div class="section-label">Languages</div>
+            <div class="lang-row">
+              <span class="lang-name">Gujarati</span>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width: 100%"></div>
+              </div>
+            </div>
+            <div class="lang-row">
+              <span class="lang-name">Hindi</span>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width: 82%"></div>
+              </div>
+            </div>
+            <div class="lang-row">
+              <span class="lang-name">English</span>
+              <div class="lang-bar">
+                <div class="lang-fill" style="width: 58%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /side-col -->
+      </div>
+      <!-- /body -->
+    </div>
+    <!-- /page -->
+  </body>
+</html>
